@@ -1,9 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+import Button from '@/app/components/button';
 
-import Button from './button';
-import CompanyFormModal from './company-form-modal';
+const CompanyFormModal = dynamic(() => import('./company-form-modal'), {
+  ssr: false,
+});
 
 export default function AddCompanyButton() {
   const [show, setShow] = useState(false);
@@ -11,10 +14,10 @@ export default function AddCompanyButton() {
     <>
       <Button onClick={() => setShow(true)}>Add company</Button>
       <CompanyFormModal
-        /* onSubmit={console.log} */
+        onSubmit={console.log}
         show={show}
         onClose={() => setShow(false)}
-      ></CompanyFormModal>
+      />
     </>
   );
 }

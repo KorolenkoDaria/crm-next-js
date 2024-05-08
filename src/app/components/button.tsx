@@ -3,10 +3,9 @@
 import React from 'react';
 import clsx from 'clsx';
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
-  children: React.ReactNode; // Добавляем свойство children
-  onClick?: () => void;
 }
 
 export default function Button({ disabled, ...rest }: ButtonProps) {
@@ -18,6 +17,6 @@ export default function Button({ disabled, ...rest }: ButtonProps) {
         !disabled && 'hover:bg-gray-800 active:bg-gray-950',
         disabled && 'text-zinc-100',
       )}
-    ></button>
+    />
   );
 }
